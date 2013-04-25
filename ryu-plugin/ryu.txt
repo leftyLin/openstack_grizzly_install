@@ -1,0 +1,343 @@
+no simple_isolation
+
+===ofctl_rest.py
+
+curl http://localhost:8080/stats/switches
+[1] 
+
+curl http://localhost:8080/stats/desc/1 |python -mjson.tool
+{
+    "1": {
+        "dp_desc": "None\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "hw_desc": "Open vSwitch\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "mfr_desc": "Nicira Networks, Inc.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "serial_num": "None\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "sw_desc": "1.2.2\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+    }
+}
+
+curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+{
+    "1": [
+        {
+            "actions": [
+                "OUTPUT:2"
+            ], 
+            "byte_count": 392, 
+            "cookie": 0, 
+            "duration_nsec": 32000000, 
+            "duration_sec": 295, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "c6:a2:9f:5e:bf:31", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 1, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 4, 
+            "priority": 32768, 
+            "table_id": 0
+        }, 
+        {
+            "actions": [
+                "OUTPUT:1"
+            ], 
+            "byte_count": 490, 
+            "cookie": 0, 
+            "duration_nsec": 71000000, 
+            "duration_sec": 295, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "32:a3:40:5b:cb:6e", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 2, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 5, 
+            "priority": 32768, 
+            "table_id": 0
+        }
+    ]
+}
+
+curl http://localhost:8080/stats/port/1 |python -mjson.tool
+{
+    "1": [
+        {
+            "collisions": 0, 
+            "port_no": 2, 
+            "rx_bytes": 1000, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 12, 
+            "tx_bytes": 910, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 11
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 65534, 
+            "rx_bytes": 0, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 0, 
+            "tx_bytes": 798, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 11
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 1, 
+            "rx_bytes": 1000, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 12, 
+            "tx_bytes": 910, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 11
+        }
+    ]
+}
+
+openflow@mininet-vm:~$ curl -X DELETE  http://localhost:8080/stats/flowentry/clear/1 |python -mjson.tool
+No JSON object could be decoded
+
+openflow@mininet-vm:~$ curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+{
+    "1": []
+}
+
+====add flow
+openflow@mininet-vm:~$ curl -X DELETE  http://localhost:8080/stats/flowentry/clear/1 |python -mjson.tool
+
+openflow@mininet-vm:~$ curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+{
+    "1": []
+}
+openflow@mininet-vm:~$ curl -d '{"dpid":"1", "actions":[{"type":"OUTPUT","port":"1"}], "match":{"dl_dst":"00:00:00:00:00:04"} }' http://localhost:8080/stats/flowentry 
+
+openflow@mininet-vm:~$ curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+{
+    "1": [
+        {
+            "actions": [
+                "OUTPUT:1"
+            ], 
+            "byte_count": 0, 
+            "cookie": 0, 
+            "duration_nsec": 375000000, 
+            "duration_sec": 2, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "00:00:00:00:00:04", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 0, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 0, 
+            "priority": 32768, 
+            "table_id": 0
+        }
+    ]
+}
+
+
+===rest.py
+
+$ curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+{
+    "1": [
+        {
+            "actions": [
+                "OUTPUT:3"
+            ], 
+            "byte_count": 42, 
+            "cookie": 0, 
+            "duration_nsec": 220000000, 
+            "duration_sec": 992, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "00:00:00:00:00:04", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 1, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 1, 
+            "priority": 32768, 
+            "table_id": 0
+        }, 
+        {
+            "actions": [
+                "OUTPUT:1"
+            ], 
+            "byte_count": 140, 
+            "cookie": 0, 
+            "duration_nsec": 259000000, 
+            "duration_sec": 992, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "00:00:00:00:00:02", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 3, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 2, 
+            "priority": 32768, 
+            "table_id": 0
+        }, 
+        {
+            "actions": [
+                "OUTPUT:2"
+            ], 
+            "byte_count": 98, 
+            "cookie": 0, 
+            "duration_nsec": 696000000, 
+            "duration_sec": 994, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "00:00:00:00:00:03", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 1, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 1, 
+            "priority": 32768, 
+            "table_id": 0
+        }, 
+        {
+            "actions": [
+                "OUTPUT:1"
+            ], 
+            "byte_count": 196, 
+            "cookie": 0, 
+            "duration_nsec": 735000000, 
+            "duration_sec": 994, 
+            "hard_timeout": 0, 
+            "idle_timeout": 0, 
+            "match": {
+                "dl_dst": "00:00:00:00:00:02", 
+                "dl_src": "00:00:00:00:00:00", 
+                "dl_type": 0, 
+                "dl_vlan": 0, 
+                "dl_vlan_pcp": 0, 
+                "in_port": 2, 
+                "nw_dst": "0.0.0.0", 
+                "nw_proto": 0, 
+                "nw_src": "0.0.0.0", 
+                "tp_dst": 0, 
+                "tp_src": 0
+            }, 
+            "packet_count": 2, 
+            "priority": 32768, 
+            "table_id": 0
+        }
+    ]
+}
+
+$ curl -d "" http://localhost:8080/v1.0/networks/102
+$ curl http://localhost:8080/v1.0/networks
+["102", "101"]
+$ curl http://localhost:8080/v1.0/networks/101
+[[1, 3], [1, 1]]
+$ curl http://localhost:8080/v1.0/networks/102
+[[1, 2]]
+
+==without simple_isolation, h2 h3 h4 can pingall==
+
+$ curl -X DELETE http://localhost:8080/v1.0/networks/102/1_2
+$ curl http://localhost:8080/v1.0/networks/102
+[]
+$ cur-X DELETE http://localhost:8080/v1.0/networks/101/1_1
+$ curl http://localhost:8080/v1.0/networks/101
+[[1, 3]]
+$ curl -X DELETE http://localhost:8080/v1.0/networks/101
+$ curl -X DELETE http://localhost:8080/v1.0/networks
+$ curl http://localhost:8080/v1.0/networks
+["102"]
+
+==Simple_isolation
+sudo mn --topo single,3 --mac --switch ovsk --controller remote
+start then can't ping all
+need create network 
+$ curl http://localhost:8080/v1.0/networks
+[]
+$ cur-d "" http://localhost:8080/v1.0/networks/101
+$ curl -d "" http://localhost:8080/v1.0/networks/102
+$ curl -d "" http://localhost:8080/v1.0/networks/101/1_3
+$ curl -d "" http://localhost:8080/v1.0/networks/101/1_1
+$ curl http://localhost:8080/v1.0/networks
+["102", "101"]
+$ curl http://localhost:8080/v1.0/networks/101
+[[1, 3], [1, 1]]
+
+h2 ping h4 OK
+
+in h2
+$ ifconfig h2-eth0:0 10.0.0.3 netmask 255.0.0.0 
+then h4 can ping 10.0.0.3
+
+in h4
+$ arp
+10.0.0.3 00:00:00:00:00:02
+10.0.0.2 00:00:00:00:00:02
+

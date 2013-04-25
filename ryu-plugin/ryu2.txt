@@ -1,0 +1,238 @@
+root@ubuntu:/etc/quantum# curl 127.0.0.1:8080/stats/switches
+[68582456275015]
+root@ubuntu:/etc/quantum# 
+root@ubuntu:/etc/quantum# curl http://localhost:8080/stats/desc/68582456275015 |python -mjson.tool
+{
+    "68582456275015": {
+        "dp_desc": "None\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "hw_desc": "Open vSwitch\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "mfr_desc": "Nicira Networks, Inc.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "serial_num": "None\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", 
+        "sw_desc": "1.4.0+build0\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+    }
+}
+
+root@ubuntu:~# curl http://192.168.126.160:8080/stats/flow/68582456275015
+Internal Server Error
+
+root@ubuntu:~# curl http://192.168.126.160:8080/stats/port/68582456275015|python -mjson.tool
+{
+    "68582456275015": [
+        {
+            "collisions": 0, 
+            "port_no": 2, 
+            "rx_bytes": 0, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 0, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 7, 
+            "rx_bytes": 16279, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 94, 
+            "tx_bytes": 46255, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 653
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 11, 
+            "rx_bytes": 468, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 6, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 4, 
+            "rx_bytes": 0, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 0, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 3, 
+            "rx_bytes": 0, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 0, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 12, 
+            "rx_bytes": 594, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 9, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }, 
+        {
+            "collisions": 0, 
+            "port_no": 65534, 
+            "rx_bytes": 0, 
+            "rx_crc_err": 0, 
+            "rx_dropped": 0, 
+            "rx_errors": 0, 
+            "rx_frame_err": 0, 
+            "rx_over_err": 0, 
+            "rx_packets": 0, 
+            "tx_bytes": 0, 
+            "tx_dropped": 0, 
+            "tx_errors": 0, 
+            "tx_packets": 0
+        }
+    ]
+}
+
+
+rest_conf_switch.py
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/conf/switches |python -mjson.tool
+[
+    "00003e6018f1b047"
+]
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/conf/switches/00003e6018f1b047 |python -mjson.tool
+[
+    "ovs_tunnel_addr", 
+    "ovsdb_addr"
+]
+
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/conf/switches/00003e6018f1b047/ovs_tunnel_addr
+"192.168.126.16
+
+rest_topology.py
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/topology/switches |python -mjson.tool
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 162, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/usr/lib/python2.7/json/tool.py", line 37, in <module>
+    main()
+  File "/usr/lib/python2.7/json/tool.py", line 29, in main
+    obj = json.load(infile)
+  File "/usr/lib/python2.7/json/__init__.py", line 274, in load
+    return loads(fp.read(),
+KeyboardInterrupt
+
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/topology/links |python -mjson.tool
+ Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 162, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/usr/lib/python2.7/json/tool.py", line 37, in <module>
+    main()
+  File "/usr/lib/python2.7/json/tool.py", line 29, in main
+    obj = json.load(infile)
+  File "/usr/lib/python2.7/json/__init__.py", line 274, in load
+    return loads(fp.read(),
+KeyboardInterrupt
+
+rest.py
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/networks/ |python -mjson.tool
+No JSON object could be decoded
+
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/networks |python -mjson.tool
+[
+    "__NW_ID_RESERVED__", 
+    "__NW_ID_EXTERNAL__", 
+    "4aa62dc3-106e-4fd4-83b2-2c2d74606df4",  <<<--- quantum netID,"demo_net"
+    "ebb7e2aa-d8bb-4fa9-a053-810b091a9080",  <<<--- quantum netID,"Ext-Net"
+    "__NW_ID_VPORT_GRE__"
+]
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4 |python -mjson.tool
+ [
+    [
+        68582456275015, 
+        12
+    ], 
+    [
+        68582456275015, 
+        7
+    ]
+]
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/networks/ebb7e2aa-d8bb-4fa9-a053-810b091a9080 |python -mjson.tool
+[
+    [
+        68582456275015, 
+        11
+    ]
+]
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/networks/__NW_ID_EXTERNAL__
+[[68582456275015, 4], [68582456275015, 3], [68582456275015, 65534], [68582456275015, 2]]
+
+
+rest-quantum.py
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/quantum/ports |python -mjson.tool
+[
+    "8a0b8314-3fd9-41c3-8a81-5809d096763b", 
+    "a9e03056-5f41-4836-8fed-6f90b645fce7", 
+    "36ce3ddc-e7c4-4dc0-8942-4042bae78b09", 
+    "a950a135-f85d-4e29-803e-7a9d0f7accd9", 
+    "e1b80e82-eebd-4a76-af50-b0f331e4abb1", 
+    "3a391891-71df-46de-9c81-ebf5deb9ea9e", 
+    "de84d8a8-be0c-4cf9-97c0-cf8a9967e638", 
+    "62cbd101-ba7b-43c8-8a30-d44d7c5e07a6", 
+    "1ae63922-4963-4e59-ad4d-dd2323843ce8"
+]
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/network_id |python -mjson.tool
+"4aa62dc3-106e-4fd4-83b2-2c2d74606df4"
+
+
+重要！
+由quantum portID 查出
+1.連接的OVS dpid =  68582456275015
+2.在linux上呈現的name = tapde84d8a8-be
+3.連在OVS的port 7 (/stats/port/68582456275015  就可以看出統計值)
+root@ubuntu:~# curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/ports |python -mjson.tool
+[
+    {
+        "datapath_id": 68582456275015, 
+        "name": "tapde84d8a8-be", 
+        "ofport": 7
+    }
+]
+
+

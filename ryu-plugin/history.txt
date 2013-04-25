@@ -1,0 +1,306 @@
+
+  273  apt-get install -y mysql-server python-mysqldb
+  274  sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf
+  275  sed -i '44 i skip-name-resolve' /etc/mysql/my.cnf
+  276  /etc/init.d/mysql restart
+  277  apt-get install -y rabbitmq-server ntp vlan bridge-utils
+  278  sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf;sysctl net.ipv4.ip_forward=1
+  280  vim /etc/ntp.conf 
+  281  ntpdate
+  282  vim /etc/ntp.conf 
+  283  ntpdate
+  284  vim /etc/ntp.conf 
+  285  ntpdate
+  286  vim /etc/ntp.conf 
+  287  apt-get install -y keystone
+  288  rm -f /var/lib/keystone/keystone.db
+  289  service keystone status
+  290  mysql -uroot -p0329
+  291  cd /home/stephen/
+  292  ls
+  293  cp etc/keystone/* /etc/keystone/
+  294  cp -r etc/keystone/* /etc/keystone/
+  295  vim /etc/keystone/keystone.conf 
+  296  service keystone restart
+  297  keystone-manage db_sync
+  298  ls
+  299  ls etc/
+  300  ls
+  301  vim keystone.sh 
+  302  sh keystone.sh 
+  303  cd
+  304  vim export.sh
+  305  source export.sh 
+  306  cd /home/stephen/
+  307  keystone tenant-list
+  308  vim /root/export.sh 
+  309  keystone tenant-list
+
+  310  apt-get install -y glance
+  311  rm -f /var/lib/glance/glance.sqlite
+  312  mysql -uroot -p0329
+  313  cp -r etc/glance/* /etc/glance/
+  314  service glance-api restart;service glance-registry restart
+  315  glance-manage version_control 0;glance-manage db_sync
+  317  glance image-list
+  318  wget https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
+  319  # glance image-create --name='cirros' --public --container-format=ovf --disk-format=qcow2 < ./cirros-0.3.0-x86_64-disk.img
+  320  glance image-list
+  321  l
+  322  ls
+  323  glance image-list
+  324  # glance image-create --name='cirros' --public --container-format=ovf --disk-format=qcow2 < ./cirros-0.3.0-x86_64-disk.img
+  325  glance image-create --name='cirros' --public --container-format=ovf --disk-format=qcow2 < ./cirros-0.3.0-x86_64-disk.img;glance image-list
+  327  ls
+  328  rm cirros-0.3.0-x86_64-disk.img 
+  329  ls
+
+  330  apt-get install -y openvswitch-switch openvswitch-datapath-dkms
+ovs-vsctl add-br br-int
+  331  ovs-vsctl add-br br-ex
+  332  ovs-vsctl add-port br-ex eth1
+  333  ifconfig eth1 0
+  334  nano /etc/network/interfaces 
+  335  /etc/init.d/networking restart
+
+  336  ifconfig -a
+  339  apt-get install python-pip 
+  345  cp ryu.conf ryu.conf.bk
+  355  pip install ryu --upgrade
+  356  vim /etc/ryu/ryu.conf
+  357  ryu-manager 
+  358  apt-get install gevent
+  359  apt-get install python-gevent
+  362  pip install quantumclient
+  363  apt-get install python-quantumclient
+  364  apt-get install netaddr
+  365  apt-get install python-netaddr
+  366  ifconfig -a
+apt-get install -y quantum-server dnsmasq quantum-dhcp-agent quantum-l3-agent quantum-plugin-ryu quantum-plugin-ryu-agent
+  370  cd /etc/
+  371  ls
+  372  cd quantum/
+  373  ls
+  374  cd plugins/
+  375  ls
+  376  cd ryu/
+  377  ls
+  378  cp ryu.ini ryu.ini.bk
+  379  vim ryu.ini
+  380  cd ../../
+  381  ls
+  382  cd /home/stephen/
+  383  cd etc/quantum/
+  384  ls
+  385  cp quantum.conf /etc/quantum/quantum.conf 
+  386  cp dhcp_agent.ini /etc/quantum/dhcp_agent.ini 
+  387  cp l3_agent.ini /etc/quantum/l3_agent.ini 
+  388  cp api-paste.ini /etc/quantum/api-paste.ini 
+
+[OVS Ryu 兩個ini都要 不然security 會失敗？]
+2013-04-23 13:39:18.290 ERROR nova.network.security_group.quantum_driver [req-b8c73b84-f4e6-408c-b38e-799cd7aa6126 fa1a897461054430b9d84307b545a953 8c6f76a3e8f64baf901a8bda03d264a3] Quantum Error getting security groups
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver Traceback (most recent call last):
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/nova/network/security_group/quantum_driver.py", line 126, in list
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     security_groups = quantum.list_security_groups(**search_opts).get(
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 107, in with_params
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     ret = self.function(instance, *args, **kwargs)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 477, in list_security_groups
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     retrieve_all, **_params)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 996, in list
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     for r in self._pagination(collection, path, **params):
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 1009, in _pagination
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     res = self.get(path, params=params)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 982, in get
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     headers=headers, params=params)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 967, in retry_request
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     headers=headers, params=params)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 912, in do_request
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     self._handle_fault_response(status_code, replybody)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 893, in _handle_fault_response
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     exception_handler_v20(status_code, des_error_body)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/quantumclient/v2_0/client.py", line 87, in exception_handler_v20
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver     message=message)
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver QuantumClientException: 404 Not Found
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver 
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver The resource could not be found.
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver 
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver    
+2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver 
+
+
+  389  cp plugins/openvswitch/ovs_quantum_plugin.ini /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini 
+  390  cd /etc/quantum/
+  391  vim quantum.conf 
+  392  vim dhcp_agent.ini 
+  393  vim l3_agent.ini 
+  394  cd plugins/
+  395  vim openvswitch/ovs_quantum_plugin.ini 
+  396  vim ryu/ryu.ini
+  397  mysql -uroot -p0329
+  398  cd /etc/init.d/
+  399  for i in $( ls quantum-* ); do sudo service $i restart; done
+  400  service dnsmasq restart
+  401  
+apt-get install cpu-checker kvm libvirt-bin pm-utils
+  402  cd /home/stephen/
+  403  cp etc/libvirt/qemu.conf /etc/libvirt/qemu.conf 
+  404  vim /etc/libvirt/qemu.conf 
+  405  
+/etc/init.d/libvirt-bin restart
+  406  
+virsh net-destroy default
+virsh net-undefine default
+  408  cp etc/libvirt/libvirtd.conf /etc/libvirt/libvirtd.conf 
+  409  cp etc/libvirt/libvirt.conf /etc/libvirt/libvirt.conf 
+ /etc/init.d/libvirt-bin restart
+  411  cat /var/log/libvirt/libvirtd.log 
+  412  date
+  413  rm /var/log/libvirt/libvirtd.log 
+  414  /etc/init.d/libvirt-bin restart
+  415  cat /var/log/libvirt/libvirtd.log 
+  416  ovs-vsctl list-br
+  417  /etc/init.d/quantum-plugin-ryu-agent restart
+  418  ovs-vsctl list-br
+  419  vim /etc/quantum/plugins/ryu/ryu.ini
+  420  /etc/init.d/quantum-plugin-ryu-agent restart
+  421  ovs-vsctl list-br
+  422  cd /etc/init.d/
+  423  for i in $( ls quantum-* ); do sudo service $i restart; done
+  424  ovs-vsctl list-br
+  425  cd /home/stephen/
+apt-get install -y nova-api nova-cert novnc nova-consoleauth nova-scheduler nova-novncproxy nova-doc nova-conductor nova-compute
+  427  mysql -u root -p0329
+  428  cp -r etc/nova/* /etc/nova/
+  429  vim /etc/nova/nova.conf
+  430  vim /etc/nova/nova-compute.conf 
+  431  nova-manage db sync
+  432  cd /etc/init.d/
+  433  for i in $( ls nova-* ); do sudo service $i restart; done
+  434  nova-manage service list
+
+apt-get install -y cinder-api cinder-scheduler cinder-volume iscsitarget open-iscsi iscsitarget-dkms tgt
+  436  mysql -u root -p0329
+  437  fdisk /dev/sdb
+  438  pvcreate /dev/sdb1
+  439  vgcreate cinder-volumes /dev/sdb1
+  440  cd /home/stephen/
+  441  cp etc/cinder/cinder.conf /etc/cinder/cinder.conf 
+  442  cp etc/cinder/api-paste.ini /etc/cinder/api-paste.ini 
+  443  cinder-manage db sync
+  444  cd /etc/init.d/
+  445  for i in $( ls cinder-* ); do sudo service $i restart; done
+  446  apt-get install openstack-dashboard memcached
+  447  mv /etc/openstack-dashboard/ubuntu_theme.py /etc/openstack-dashboard/ubuntu_theme.py.bak
+  448  sed -i 's/127.0.0.1/192.168.126.160/g' /etc/memcached.conf
+  449  vim /etc/openstack-dashboard/local_settings.py 
+  450  /etc/init.d/memcached restart;/etc/init.d/apache2 restart
+  
+  736  ryu-manager --verbose 2>&1 |tee ./ryu.log
+
+
+  976  curl 127.0.0.1:8080/v1.0/topology/switches
+  977  curl 127.0.0.1:8080/stats/switches
+  978  curl http://localhost:8080/stats/desc/68582456275015 |python -mjson.tool
+  979  clear
+  980  curl http://localhost:8080/stats/flow/68582456275015 |python -mjson.tool
+  981  curl http://localhost:8080/stats/flow/1 |python -mjson.tool
+  982  cd /usr/lib/python2.7/dist-packages/quantum/plugins/ryu/
+  983  ls
+  984  curl http://localhost:8080/stats/flow/68582456275015 |python -mjson.tool
+  985  curl http://192.168.126.160:8080/stats/flow/68582456275015 |python -mjson.tool
+  986  vim /etc/ryu/ryu.conf
+  987  curl http://192.168.126.160:8080/v1.0/conf/switches |python -mjson.tool
+  988  curl http://192.168.126.160:8080/v1.0/conf/switches/00003e6018f1b047 |python -mjson.tool
+  989  curl http://192.168.126.160:8080/v1.0/conf/switches/ovs_tunnel_addr
+  990  curl http://192.168.126.160:8080/v1.0/conf/switches/00003e6018f1b047/ovs_tunnel_add
+  991  curl http://192.168.126.160:8080/v1.0/topology/switches |python -mjson.tool
+  992  curl http://192.168.126.160:8080/v1.0/topology/links |python -mjson.tool
+  993  curl http://192.168.126.160:8080/v1.0/networks/ |python -mjson.tool
+  994  curl http://192.168.126.160:8080/v1.0/networks |python -mjson.tool
+  995  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4 |python -mjson.tool
+  996  curl http://192.168.126.160:8080/v1.0/networks/ebb7e2aa-d8bb-4fa9-a053-810b091a9080 |python -mjson.tool
+  997  curl http://192.168.126.160:8080/v1.0/networks/__NW_ID_VPORT_GRE__ |python -mjson.tool
+  998  curl http://192.168.126.160:8080/v1.0/networks/__NW_ID_EXTERNAL__
+  999  curl http://192.168.126.160:8080/v1.0/networks/__NW_ID_RESERVED__
+ 1000  /v1.0/networks/{network-id}/68582456275015_2/macs/
+ 1001  curl http://192.168.126.160:8080/v1.0/networks/{network-id}/68582456275015_2/macs/
+ 1002  curl http://192.168.126.160:8080/v1.0/networks/__NW_ID_EXTERNAL__/68582456275015_2/macs/
+ 1003  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_2/macs/
+ 1004  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4 |python -mjson.tool
+ 1005  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs/ |python -mjson.tool
+ 1006  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs |python -mjson.tool
+ 1007  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs |python -mjson.tool
+ 1008  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs/
+ 1009  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs/
+ 1010  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_1/macs/
+ 1011  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/
+ 1012  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4
+ 1013  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12
+ 1014  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs/
+ 1015  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs
+ 1016  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/
+ 1017  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015-12/
+ 1018  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015-12/macs/
+ 1019  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015/12/macs/
+ 1020  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/macs/
+ 1021  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/{68582456275015}_{12}/macs/
+ 1022  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs/
+ 1023  curl http://192.168.126.160:8080/v1.0/networks/ebb7e2aa-d8bb-4fa9-a053-810b091a9080/68582456275015_7/macs/
+ 1024  curl http://192.168.126.160:8080/v1.0/networks/ebb7e2aa-d8bb-4fa9-a053-810b091a9080/68582456275015_11/ma
+ 1025  curl http://192.168.126.160:8080/v1.0/quantum/ports/
+ 1026  curl http://192.168.126.160:8080/v1.0/quantum/ports
+ 1027  curl http://192.168.126.160:8080/v1.0/networks/ebb7e2aa-d8bb-4fa9-a053-810b091a9080/68582456275015_7/macs
+ 1028  curl http://192.168.126.160:8080/v1.0/quantum/ports |python -mjson.tool
+ 1029  curl http://192.168.126.160:8080/v1.0/topology/switches
+ 1030  curl http://192.168.126.160:8080/stats/flow/
+ 1031  curl http://192.168.126.160:8080/stats/flow/68582456275015
+ 1032  curl http://192.168.126.160:8080/stats/port/68582456275015
+ 1033  curl http://192.168.126.160:8080/stats/port/68582456275015|python -mjson.tool
+ 1034  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12
+ 1035  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_12/
+ 1036  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_65534
+ 1037  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4
+ 1038  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7
+ 1039  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs
+ 1040  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs/
+ 1041  curl http://localhost:8080/stats/flow/68582456275015
+ 1042  curl http://localhost:8080/firewall/module/status
+ 1043  df -lh
+ 1044  curl http://localhost:8080/stats/flow/68582456275015
+ 1045  curl http://localhost:8080/stats/flow/68582456275015/
+ 1046  curl http://localhost:8080/stats/port/68582456275015/
+ 1047  curl http://localhost:8080/stats/port/68582456275015
+ 1048  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs/
+ 1049  ryu-client --help
+ 1050  ryu-client --host=192.168.126.160 list_nets
+ 1051  ryu-client --host=192.168.126.160 list_ports
+ 1052  ryu-client --host=192.168.126.160 list_tun_ports
+ 1053  ryu-client --host=192.168.126.160 list_tun_ports |less
+ 1054  ryu-client --host=192.168.126.160 topo_list_links
+ 1055  ryu-client --host=192.168.126.160 sc_list_sw
+ 1056  ryu-client --host=192.168.126.160 qi_list_iface
+ 1057  ryu-client --host=192.168.126.160 qi_list_keys
+ 1058  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/7/macs/
+ 1059  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/macs/
+ 1060  curl http://192.168.126.160:8080/v1.0/networks/4aa62dc3-106e-4fd4-83b2-2c2d74606df4/68582456275015_7/mac
+ 1061  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/4aa62dc3-106e-4fd4-83b2-2c2d74606df4
+ 1062  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/network_id
+ 1063  curl http://192.168.126.160:8080/v1.0/quantum/ports/
+ 1064  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/network_id/
+ 1065  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/network_id
+ 1066  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638
+ 1067  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/
+ 1068  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys
+ 1069  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/network_id
+ 1070  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/network_id/
+ 1071  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/ports
+ 1072  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/ports/
+ 1073  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/
+ 1074  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys
+ 1075  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/network_id
+ 1076  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/ports
+ 1077  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/ports ||python -mjson.tool
+ 1078  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/network_id |python -mjson.tool
+ 1079  curl http://192.168.126.160:8080/v1.0/quantum/ports/de84d8a8-be0c-4cf9-97c0-cf8a9967e638/keys/ports |python -mjson.tool
+ 1080  history |grep ryu
+ 1081  ryu-manager --verbose 2>&1 |tee ./ryu.log

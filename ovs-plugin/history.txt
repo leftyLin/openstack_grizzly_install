@@ -1,0 +1,219 @@
+    1  nano /etc/network/interfaces 
+    2  nano /etc/network/interfaces 
+    3  ifconfig 
+    4  /etc/init.d/networking restart
+    5  ifconfig 
+    6  ifconfig eth0
+    7  nslookup www.google.com.tw
+    8  nano /etc/network/interfaces 
+    9  nslookup www.google.com.tw
+   10  /etc/init.d/networking restart
+   11  nslookup www.google.com.tw
+   12  nano /etc/network/interfaces 
+   13  /etc/init.d/networking restart
+   14  nslookup www.google.com.tw
+   15  vim /etc/resolvconf/resolv.conf.d/head 
+   16  resolvconf -u
+   17  nslookup www.google.com.tw
+   18  apt-get update
+   19  vim /etc/resolvconf/resolv.conf.d/head 
+   20  ping 192.168.126.1
+   21  ping 192.168.126.2
+   22  vim /etc/resolvconf/resolv.conf.d/head 
+   23  resolvconf -u
+   24  nslookup www.google.com.tw
+   25  nano /etc/network/interfaces 
+   26  vim /etc/network/interfaces 
+   27  vim /etc/resolvconf/resolv.conf.d/head 
+   28  resolvconf -u
+   29  /etc/init.d/networking restart
+   30  ifconfig 
+   31  ifconfig eht0
+   32  ifconfig eth0
+   33  nslookup www.google.com.tw
+   34  nslookup www.google.com
+   35  apt-get update
+   36  nano /etc/network/interfaces 
+   37  route -n
+   38  nano /etc/network/interfaces 
+   39  /etc/init.d/networking restart
+   40  apt-get update
+   41  ifconfig eth0
+
+echo deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/grizzly main >> /etc/apt/sources.list.d/grizzly.list
+apt-get install ubuntu-cloud-keyring python-software-properties software-properties-common python-keyring -y
+apt-get update;apt-get upgrade -y
+
+   45  vim /etc/apt/apt.conf
+   46  apt-get update;apt-get upgrade -y
+
+apt-get install -y mysql-server python-mysqldb
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf
+sed -i '44 i skip-name-resolve' /etc/mysql/my.cnf
+/etc/init.d/mysql restart
+apt-get install -y rabbitmq-server ntp
+apt-get install -y vlan bridge-utils
+sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+sysctl net.ipv4.ip_forward=1
+
+apt-get install -y keystone
+rm -f /var/lib/keystone/keystone.db
+
+   57  service keystone status
+mysql -uroot -p0329
+   59  ls /etc/keystone/ -lh
+   60  cp /cp /home/stephen/openstack_grizzly/etc/keystone/* /etc/keystone/
+   61  cp /home/stephen/openstack_grizzly/etc/keystone/* /etc/keystone/
+   62  ls -lh
+   63  ls /etc/keystone/ -lh
+   64  vim /etc/keystone/keystone.conf 
+   65  ifconfig 
+service keystone restart
+keystone-manage db_sync
+   68  mysql -uroot -p0329
+   69  service keystone restart
+   70  keystone-manage db_sync
+   71  cp /home/stephen/openstack_grizzly/keystone.sh ./
+   72  ls
+   73  vim keystone.sh 
+sh keystone.sh 
+vim export.sh
+source export.sh 
+keystone tenant-list
+apt-get install -y glance
+   79  service glance-api status
+mysql -uroot -p0329
+   81  ls -lh /etc/glance/
+cp /home/stephen/openstack_grizzly/etc/glance/* /etc/glance/
+   83  ls -lh /etc/glance/
+   84  vim /etc/glance/glance-api.conf 
+   85  vim /etc/glance/glance-registry
+   86  vim /etc/glance/glance-registry.conf 
+service glance-api restart;service glance-registry restart
+glance-manage version_control 0
+glance-manage db_sync
+   90  ls
+wget https://launchpad.net/cirros/trunk/0.3.0/+download/cirros-0.3.0-x86_64-disk.img
+glance image-create --name='cirros' --public --container-format=ovf --disk-format=qcow2 < ./cirros-0.3.0-x86_64-disk.img
+apt-get install -y openvswitch-switch openvswitch-datapath-dkms
+   94  ifconfig 
+   95  ifconfig -a
+   96  reboot
+   97  ifconfig 
+   98  ifconfig -a
+
+ovs-vsctl add-br br-ex
+ovs-vsctl add-port br-ex eth1
+ifconfig eth1 0
+nano /etc/network/interfaces 
+/etc/init.d/networking restart
+  104  ifconfig -
+  105  ifconfig -a
+ovs-vsctl add-br br-int
+  107  ifconfig -a
+
+(Ryu? OVS?)
+
+apt-get install -y quantum-server quantum-plugin-openvswitch quantum-plugin-openvswitch-agent dnsmasq quantum-dhcp-agent quantum-l3-agent
+
+mysql -uroot -p0329
+  110  ls -lh /etc/quantum/
+  111  cp -r /home/stephen/openstack_grizzly/etc/quantum/* /etc/quantum/
+  112  vim /etc/quantum/quantum.conf 
+  113  vim /etc/quantum/dhcp_agent.ini 
+  114  vim /etc/quantum/l3_agent.ini 
+  115  vim /etc/quantum/metadata_agent.ini 
+  116  vim /etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini 
+for i in $( ls quantum-* ); do sudo service $i restart; done
+  118  cd /etc/init.d/
+  119  for i in $( ls quantum-* ); do sudo service $i restart; done
+service dnsmasq restart
+
+apt-get install cpu-checker kvm libvirt-bin pm-utils
+vim /etc/libvirt/qemu.conf 
+virsh net-destroy default
+/etc/init.d/libvirt-bin restart
+  125  cd
+virsh net-destroy default
+virsh net-undefine default
+  128  vim /etc/libvirt/libvirt.conf 
+  129  vim /etc/libvirt/libvirtd.conf 
+  130  vim /etc/libvirt/libvirt.conf 
+service libvirt-bin restart
+  132  cat /var/log/libvirt/libvirtd.log 
+  133  date
+  134  rm /var/log/libvirt/libvirtd.log 
+service libvirt-bin restart
+  136  cat /var/log/libvirt/libvirtd.log 
+apt-get install -y nova-api nova-cert novnc nova-consoleauth nova-scheduler nova-novncproxy nova-doc nova-conductor nova-compute-kvm
+apt-get install -y nova-api nova-cert novnc nova-consoleauth nova-scheduler nova-novncproxy nova-doc nova-conductor nova-compute
+mysql -u root -p0329
+  140  ls -lh /etc/nova/
+cp -r /home/stephen/openstack_grizzly/etc/nova/* /etc/nova/
+  142  vim /etc/nova/nova.conf
+  143  vim /etc/nova/nova-compute.conf 
+  144  vim /etc/nova/nova.conf
+nova-manage db sync
+cd /etc/init.d/
+for i in $( ls nova-* ); do sudo service $i restart; done
+nova-manage service list
+
+
+apt-get install -y cinder-api cinder-scheduler cinder-volume iscsitarget open-iscsi iscsitarget-dkms tgt
+mysql -u root -p0329
+fdisk /dev/sdb 
+pvcreate /dev/sdb1
+vgcreate cinder-volumes /dev/sdb1
+  155  cd 
+  156  ls -lh /etc/cinder/
+cp /home/stephen/openstack_grizzly/etc/cinder/cinder.conf /etc/cinder/cinder.conf 
+cp /home/stephen/openstack_grizzly/etc/cinder/api-paste.ini /etc/cinder/api-paste.ini 
+cinder-manage db sync
+cd /etc/init.d/
+for i in $( ls cinder-* ); do sudo service $i restart; done
+
+apt-get install openstack-dashboard memcached
+mv /etc/openstack-dashboard/ubuntu_theme.py /etc/openstack-dashboard/ubuntu_theme.py.bak
+vim /etc/openstack-dashboard/local_settings.py
+sed -i 's/127.0.0.1/192.168.126.160/g' /etc/memcached.conf
+service memcached restart;service apache2 restart
+
+  167  cd
+  168  quantum -h
+  169  quantum security-group-list
+  170  source export.sh 
+  171  quantum security-group-list
+  172  cp export.sh demo-export.sh 
+  173  vim demo-export.sh 
+  174  source demo-export.sh 
+  175  quantum security-group-list
+  176  vim /etc/quantum/quantum.conf 
+  177  quantum security-group-list
+  178  quantum -h
+  179  quantum security-group-create test
+  180  quantum security-group-rule-list
+  181  quantum port-create -h
+  182  quantum port-create --security-group test demo
+  183  nova boot --image cirros --flavor 1 --nic port-id=a97eb2d4-8341-41dc-bc15-d69546eaf139 test1
+  184  quantum port-create --security-group test demo
+  185  nova boot --image cirros --flavor 1 --nic port-id=25ffe03c-6d93-45eb-a4a7-e644c14f18e9 test2
+  186  quantum port-create --security-group default demo
+  187  nova boot --image cirros --flavor 1 --nic port-id=fc446eb1-2949-45b0-ab96-4e47e2c668a6 demo1
+  188  ifconfig -a
+  189  ping 192.168.1.3
+  190  ping 192.168.1.4
+  191  ping 192.168.1.5
+  192  ping 192.168.1.2
+  193  ping 192.168.1.5
+  194  ping 192.168.1.4
+  195  quantum port-create --security-group default demo
+  196  nova boot --image cirros --flavor 1 --nic port-id=4c75c9a6-e5d4-41b6-bfa9-23e49f6d346f demo2
+  197  ping 192.168.1.3
+  198  ping 192.168.1.4
+  199  ping 192.168.1.5
+  200  ping 192.168.1.6
+  201  ssh 192.168.1.3
+  202  ssh 192.168.1.4
+  203  ssh 192.168.1.5
+  204  ssh 192.168.1.4
+  205  history >/root/history.txt
