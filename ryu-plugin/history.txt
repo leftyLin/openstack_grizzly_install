@@ -70,7 +70,7 @@ ovs-vsctl add-br br-int
   356  vim /etc/ryu/ryu.conf
   357  ryu-manager 
   358  apt-get install gevent
-  359  apt-get install python-gevent
+  359  apt-get install python-gevent python-webob python-routes python-netaddr python-netifaces
   362  pip install quantumclient
   363  apt-get install python-quantumclient
   364  apt-get install netaddr
@@ -98,6 +98,11 @@ apt-get install -y quantum-server dnsmasq quantum-dhcp-agent quantum-l3-agent qu
   388  cp api-paste.ini /etc/quantum/api-paste.ini 
 
 [OVS Ryu 兩個ini都要 不然security 會失敗？]
+	update:: 20130813: 
+		/etc/default/quantum-server 裡面將預設改為即可 不用再改/etc/init/quantum-server.conf的程式碼
+			#QUANTUM_PLUGIN_CONFIG="/etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini"
+			QUANTUM_PLUGIN_CONFIG="/etc/quantum/plugins/ryu/ryu.ini"
+
 2013-04-23 13:39:18.290 ERROR nova.network.security_group.quantum_driver [req-b8c73b84-f4e6-408c-b38e-799cd7aa6126 fa1a897461054430b9d84307b545a953 8c6f76a3e8f64baf901a8bda03d264a3] Quantum Error getting security groups
 2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver Traceback (most recent call last):
 2013-04-23 13:39:18.290 31654 TRACE nova.network.security_group.quantum_driver   File "/usr/lib/python2.7/dist-packages/nova/network/security_group/quantum_driver.py", line 126, in list
@@ -141,6 +146,7 @@ apt-get install -y quantum-server dnsmasq quantum-dhcp-agent quantum-l3-agent qu
   399  for i in $( ls quantum-* ); do sudo service $i restart; done
   400  service dnsmasq restart
   401  
+  
 apt-get install cpu-checker kvm libvirt-bin pm-utils
   402  cd /home/stephen/
   403  cp etc/libvirt/qemu.conf /etc/libvirt/qemu.conf 
@@ -187,8 +193,7 @@ apt-get install -y cinder-api cinder-scheduler cinder-volume iscsitarget open-is
   441  cp etc/cinder/cinder.conf /etc/cinder/cinder.conf 
   442  cp etc/cinder/api-paste.ini /etc/cinder/api-paste.ini 
   443  cinder-manage db sync
-  444  cd /etc/init.d/
-  445  for i in $( ls cinder-* ); do sudo service $i restart; done
+  444  cd /etc/init.d/;for i in $( ls cinder-* ); do sudo service $i restart; done
   446  apt-get install openstack-dashboard memcached
   447  mv /etc/openstack-dashboard/ubuntu_theme.py /etc/openstack-dashboard/ubuntu_theme.py.bak
   448  sed -i 's/127.0.0.1/192.168.126.160/g' /etc/memcached.conf
