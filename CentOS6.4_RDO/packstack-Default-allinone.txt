@@ -10,13 +10,13 @@ CONFIG_CINDER_INSTALL=y
 CONFIG_NOVA_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install Quantum
-CONFIG_QUANTUM_INSTALL=y
+CONFIG_QUANTUM_INSTALL=n
 
 # Set to 'y' if you would like Packstack to install Horizon
 CONFIG_HORIZON_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install Swift
-CONFIG_SWIFT_INSTALL=n
+CONFIG_SWIFT_INSTALL=y
 
 # Set to 'y' if you would like Packstack to install the OpenStack
 # Client packages. An admin "rc" file will also be installed
@@ -28,7 +28,7 @@ CONFIG_NTP_SERVERS=
 
 # Set to 'y' if you would like Packstack to install Nagios to monitor
 # openstack hosts
-CONFIG_NAGIOS_INSTALL=n
+CONFIG_NAGIOS_INSTALL=y
 
 # Comma separated list of servers to be excluded from installation in
 # case you are running Packstack the second time with the same answer
@@ -49,7 +49,7 @@ CONFIG_MYSQL_HOST=192.168.126.179
 CONFIG_MYSQL_USER=root
 
 # Password for the MySQL admin user
-CONFIG_MYSQL_PW=68c30b64cfd94cc6
+CONFIG_MYSQL_PW=12784d9daf514077
 
 # The IP address of the server on which to install the QPID service
 CONFIG_QPID_HOST=192.168.126.179
@@ -58,16 +58,16 @@ CONFIG_QPID_HOST=192.168.126.179
 CONFIG_KEYSTONE_HOST=192.168.126.179
 
 # The password to use for the Keystone to access DB
-CONFIG_KEYSTONE_DB_PW=a35262ef2ec04d23
+CONFIG_KEYSTONE_DB_PW=fb2e75ac4f634d17
 
 # The token to use for the Keystone service api
-CONFIG_KEYSTONE_ADMIN_TOKEN=6698a260b7c94ff89280c8d37e50bbaf
+CONFIG_KEYSTONE_ADMIN_TOKEN=f8b315fd1bfd4a6bab57210849febdf7
 
 # The password to use for the Keystone admin user
-CONFIG_KEYSTONE_ADMIN_PW=ac52c299e42546b0
+CONFIG_KEYSTONE_ADMIN_PW=27722d64d9d24cc4
 
 # The password to use for the Keystone demo user
-CONFIG_KEYSTONE_DEMO_PW=54d2b61c6ad242a4
+CONFIG_KEYSTONE_DEMO_PW=77aa2f8b0e4e4644
 
 # Kestone token format. Use either UUID or PKI
 CONFIG_KEYSTONE_TOKEN_FORMAT=PKI
@@ -76,19 +76,19 @@ CONFIG_KEYSTONE_TOKEN_FORMAT=PKI
 CONFIG_GLANCE_HOST=192.168.126.179
 
 # The password to use for the Glance to access DB
-CONFIG_GLANCE_DB_PW=1baf09941c6745f9
+CONFIG_GLANCE_DB_PW=31cfc0efee0a45aa
 
 # The password to use for the Glance to authenticate with Keystone
-CONFIG_GLANCE_KS_PW=a8f2fd7c5c2448e2
+CONFIG_GLANCE_KS_PW=718143f83db8469a
 
 # The IP address of the server on which to install Cinder
 CONFIG_CINDER_HOST=192.168.126.179
 
 # The password to use for the Cinder to access DB
-CONFIG_CINDER_DB_PW=634cbc1cf5614857
+CONFIG_CINDER_DB_PW=5545cbbe632b49b0
 
 # The password to use for the Cinder to authenticate with Keystone
-CONFIG_CINDER_KS_PW=bbc7c48e8fe64233
+CONFIG_CINDER_KS_PW=b4277f234f534d89
 
 # Create Cinder's volumes group. This should only be done for testing
 # on a proof-of-concept installation of Cinder.  This will create a
@@ -118,10 +118,10 @@ CONFIG_NOVA_COMPUTE_HOSTS=192.168.126.179
 CONFIG_NOVA_CONDUCTOR_HOST=192.168.126.179
 
 # The password to use for the Nova to access DB
-CONFIG_NOVA_DB_PW=ce3c2351df9842a9
+CONFIG_NOVA_DB_PW=039cd62c900f4511
 
 # The password to use for the Nova to authenticate with Keystone
-CONFIG_NOVA_KS_PW=26b307025ee94e90
+CONFIG_NOVA_KS_PW=ddd7be9e090945a2
 
 # The IP address of the server on which to install the Nova Scheduler
 # service
@@ -149,10 +149,10 @@ CONFIG_NOVA_NETWORK_PUBIF=eth0
 CONFIG_NOVA_NETWORK_PRIVIF=lo
 
 # IP Range for Flat DHCP
-CONFIG_NOVA_NETWORK_FIXEDRANGE=192.168.100.0/24
+CONFIG_NOVA_NETWORK_FIXEDRANGE=192.168.32.0/22
 
 # IP Range for Floating IP's
-CONFIG_NOVA_NETWORK_FLOATRANGE=192.168.2.0/24
+CONFIG_NOVA_NETWORK_FLOATRANGE=10.3.4.0/22
 
 # Name of the default floating pool to which the specified floating
 # ranges are added to
@@ -169,10 +169,10 @@ CONFIG_QUANTUM_SERVER_HOST=192.168.126.179
 CONFIG_QUANTUM_USE_NAMESPACES=y
 
 # The password to use for Quantum to authenticate with Keystone
-CONFIG_QUANTUM_KS_PW=c55244451b054f2a
+CONFIG_QUANTUM_KS_PW=cf61ac0bdbb14437
 
 # The password to use for Quantum to access DB
-CONFIG_QUANTUM_DB_PW=a998f8a170d64c47
+CONFIG_QUANTUM_DB_PW=7dc48cc3e0ca4b43
 
 # A comma separated list of IP addresses on which to install Quantum
 # L3 agent
@@ -180,7 +180,7 @@ CONFIG_QUANTUM_L3_HOSTS=192.168.126.179
 
 # The name of the bridge that the Quantum L3 agent will use for
 # external traffic, or 'provider' if using provider networks
-CONFIG_QUANTUM_L3_EXT_BRIDGE=provider
+CONFIG_QUANTUM_L3_EXT_BRIDGE=br-ex
 
 # A comma separated list of IP addresses on which to install Quantum
 # DHCP agent
@@ -195,7 +195,7 @@ CONFIG_QUANTUM_METADATA_HOSTS=192.168.126.179
 
 # A comma separated list of IP addresses on which to install Quantum
 # metadata agent
-CONFIG_QUANTUM_METADATA_PW=3ac0eb014ef947e8
+CONFIG_QUANTUM_METADATA_PW=b5c0842d9b3443f1
 
 # The type of network to allocate for tenant networks
 CONFIG_QUANTUM_LB_TENANT_NETWORK_TYPE=local
@@ -209,19 +209,19 @@ CONFIG_QUANTUM_LB_VLAN_RANGES=
 CONFIG_QUANTUM_LB_INTERFACE_MAPPINGS=
 
 # Type of network to allocate for tenant networks
-CONFIG_QUANTUM_OVS_TENANT_NETWORK_TYPE=gre
+CONFIG_QUANTUM_OVS_TENANT_NETWORK_TYPE=local
 
 # A comma separated list of VLAN ranges for the Quantum openvswitch
 # plugin
-CONFIG_QUANTUM_OVS_VLAN_RANGES=physnetFlat
+CONFIG_QUANTUM_OVS_VLAN_RANGES=
 
 # A comma separated list of bridge mappings for the Quantum
 # openvswitch plugin
-CONFIG_QUANTUM_OVS_BRIDGE_MAPPINGS=physnetFlat:br-ex
+CONFIG_QUANTUM_OVS_BRIDGE_MAPPINGS=
 
 # A comma separated list of colon-separated OVS bridge:interface
 # pairs. The interface will be added to the associated bridge.
-CONFIG_QUANTUM_OVS_BRIDGE_IFACES=br-ex:eth1
+CONFIG_QUANTUM_OVS_BRIDGE_IFACES=
 
 # The IP address of the server on which to install the OpenStack
 # client packages. An admin "rc" file will also be installed
@@ -245,7 +245,7 @@ CONFIG_SSL_KEY=
 CONFIG_SWIFT_PROXY_HOSTS=192.168.126.179
 
 # The password to use for the Swift to authenticate with Keystone
-CONFIG_SWIFT_KS_PW=8e349d1ecd4e4d17
+CONFIG_SWIFT_KS_PW=9367e203d907443d
 
 # A comma separated list of IP addresses on which to install the
 # Swift Storage services, each entry should take the format
@@ -267,10 +267,10 @@ CONFIG_SWIFT_STORAGE_REPLICAS=1
 CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 
 # Whether to provision for demo usage and testing
-CONFIG_PROVISION_DEMO=y
+CONFIG_PROVISION_DEMO=n
 
 # The CIDR network address for the floating IP subnet
-CONFIG_PROVISION_DEMO_FLOATRANGE=192.168.1.0/24
+CONFIG_PROVISION_DEMO_FLOATRANGE=172.24.4.224/28
 
 # Whether to configure tempest for testing
 CONFIG_PROVISION_TEMPEST=n
@@ -283,7 +283,7 @@ CONFIG_PROVISION_TEMPEST_REPO_REVISION=stable/grizzly
 
 # Whether to configure the ovs external bridge in an all-in-one
 # deployment
-CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE=y
+CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE=n
 
 # To subscribe each server to EPEL enter "y"
 CONFIG_USE_EPEL=y
@@ -296,4 +296,4 @@ CONFIG_REPO=
 CONFIG_NAGIOS_HOST=192.168.126.179
 
 # The password of the nagiosadmin user on the Nagios server
-CONFIG_NAGIOS_PW=8a40cf6331c64c44
+CONFIG_NAGIOS_PW=bcb5e982a60746e0
