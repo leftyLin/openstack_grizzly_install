@@ -1,0 +1,5 @@
+[localrepo]
+name=Centos $releasever - My Local Repo
+baseurl=file:///tmp/myrepo/
+enabled=1
+gpgcheck=0
